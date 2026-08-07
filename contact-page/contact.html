@@ -1,47 +1,63 @@
+<!DOCTYPE html>
 <html lang="en-US">
-
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contact Me</title>
         <script src="contact.js" defer></script>
         <link rel="stylesheet" href="../styles.css">
     </head>
 
     <body>
-        <header> Contact Me </header>
+        <header>
+            <h1>Contact Me</h1>
+        </header>
 
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../projects-page/projects.html">Projects</a></li>
-            <li style="float: right;"><a href="contact.html">Contact</a></li>
-        </ul>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li style="float: right;"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-        <br>
+        <main class="page-shell">
+            <section class="page-intro">
+                <h2>Let’s connect</h2>
+                <p>
+                    Thanks for visiting my site. If you’d like to get in touch, send me a message below and I’ll get back to you as soon as I can.
+                </p>
+            </section>
 
-        <form id="contact-form" action="contact.js" method="GET">
+            <section class="contact-panel">
+                <form id="contact-form" action="https://formspree.io/f/moeavneb" method="POST">
+                    <div class="form-grid">
+                        <label class="contact-field">
+                            <span>Full Name</span>
+                            <input type="text" id="fname" name="name" placeholder="Your full name" required>
+                        </label>
 
-            <div class="contact left"></div>
+                        <label class="contact-field">
+                            <span>Email</span>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </label>
+                    </div>
 
-                <label for="fname"> Full Name: </label>
-                <input type="text" id="fname" name="fname" placeholder="Full Name">
+                    <label class="contact-field">
+                        <span>Message</span>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell me a little about what you’d like to talk about..." required></textarea>
+                    </label>
 
-            </div>
+                    <input type="hidden" name="_subject" value="New website contact message">
+                    <button type="submit" class="contact-button">Send message</button>
+                    <p id="form-status" class="form-status" aria-live="polite"></p>
+                </form>
+            </section>
+        </main>
 
-            <br> <br>
-
-            <label for="email"> E-mail: </label>
-            <input type="email" id="email" name="email" placeholder="E-mail">
-            </div>
-
-            <br> <br>
-
-            <label for="message"> Message: </label>
+        <footer>
+            Website created by Santiago Nungaray
             <br>
-            <textarea id="message" name="message" rows="6" cols="80"> </textarea>
-
-            <br> <br>
-
-            <button type="submit" name="submit">Submit</button>
-
-        </form>
+            <a href="contact.html">Contact Me</a>
+        </footer>
     </body>
 </html>

@@ -1,39 +1,55 @@
-<html lang="en-US"> 
-
+<!DOCTYPE html>
+<html lang="en-US">
     <head>
-        <title> Santiago's Projects </title>
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Santiago's Projects</title>
         <link rel="stylesheet" href="../styles.css">
     </head>
 
     <body>
-        <!-- Header -->
-        <header> Projects </header>
+        <header>
+            <h1>Projects</h1>
+        </header>
 
-        <!-- Navigation Bar -->
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li style="float: right;"><a href="../contact-page/contact.html">Contact</a></li>
-        </ul>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li style="float: right;"><a href="../contact-page/contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-        <br>
+        <main class="page-shell">
+            <section class="page-intro">
+                <h2>Featured Work</h2>
+                <p>
+                    This is the main project I’m currently showcasing: my personal portfolio website.
+                    I’ll add more projects here as I build them.
+                </p>
+            </section>
 
-        <h1 id="header"> Projects </h1>
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>
+                        A responsive personal website built with HTML and CSS to showcase my background, experience,
+                        and interests in a clean, modern layout.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Responsive</span>
+                    </div>
+                    <a class="project-link" href="../index.html">View site</a>
+                </article>
+            </div>
+        </main>
 
-        <!-- Projects paragraph -->
-        <h3> Projects </h3>
-
-        <h4> Project 1: Basic HTML Page <h4>
-            <p> 
-                A basic HTML webpage that is styles by CSS and data-handled
-                using javescript.
-                
-                <br>
-
-                Click <a href="../index.html">Here</a> to go to project.
-            </p>
-
+        <footer>
+            Website created by Santiago Nungaray
+            <br>
+            <a href="../contact-page/contact.html">Contact Me</a>
+        </footer>
     </body>
-
 </html>

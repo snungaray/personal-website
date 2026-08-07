@@ -3,22 +3,22 @@
     <!-- Website metadata -->
     <head>
         <!-- Website title -->
-        <title> Santiago's Website </title>
-    
+        <title>Santiago's Website</title>
+
         <!-- Author -->
         <meta name="author" content="Santiago Nungaray">
 
-        <!-- Specifies character encoding for HTML document -->
+        <!-- Specifies character encoding for the HTML document -->
         <meta charset="UTF-8">
 
-        <!-- User visable area of the webpage for user -->
+        <!-- User-visible area of the webpage -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Keywords -->
         <meta name="keywords" content="Santiago Nungaray, Santiago, Nungaray">
 
-        <!-- Desciption -->
-        <meta name="Desciption" content="Santiago's personal website.">
+        <!-- Description -->
+        <meta name="description" content="Santiago Nungaray's personal website.">
 
         <!-- CSS Style Sheet -->
         <link rel="stylesheet" href="styles.css">
@@ -27,14 +27,17 @@
     <!-- Website content -->
     <body>
         <!-- Header -->
-        <header> Home </header>
+        <header>
+            <h1>Home</h1>
+        </header>
 
         <!-- Navigation Bar -->
-        <ul>
-            <li><a href="index.html">Home</a></li>                           
-            <li><a href="projects-page/projects.html">Projects</a></li>
-            <li style="float: right;"><a href="contact-page/contact.html">Contact</a></li>
-        </ul>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li style="float: right;"><a href="contact-page/contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
         <!-- Setup a two column webpage-->
         <div class="content-row">
@@ -43,185 +46,156 @@
 
                 <br>
                 <!-- Profile picture -->
-                 <div style="text-align: center;">
-                    <img src="Santiago_Nungaray.png" alt="profile picture">
+                <div style="text-align: center;">
+                   <img src="Santiago_Nungaray.png" alt="Profile picture of Santiago Nungaray">
                 </div>
 
                 <br>
 
                 <!-- Short introduction of myself -->
                 <p>
-                    Hello,
-                    <br><br>
-                    My name is Santiago Nungaray and this is my personal 
-                    website. Please feel free to take
-                    a look around, and use the 'Contact Me' page at the top 
-                    right of the screen to get in contect with me.
+                   Hello,
+                   <br><br>
+                   My name is Santiago Nungaray, and this is my personal website. Please feel free to take a look around, and use the Contact page at the top right of the screen to get in touch with me.
                 </p>
 
                 <!-- Education Header -->
                 <div id="column-header">
-                    Education
+                   Education
                 </div>
 
                 <!-- Education Content -->
-                <p> 
-                    B.S in Computer Science - University of Las Vegas, Nevada (UNLV)
-                    Expected Dec 2027
-                    <br><br>
-                    A.A in Computer Science - College of Southern Nevada (CSN) 
-                    Graduated May 2026
-                    <br><br>
-                    Data Analyst - NCLab - Completed August 2025
-                    <br>
-                    Technical Support Fundamentals - Coursera - July 2021
+                <p>
+                   B.S. in Computer Science — University of Nevada, Las Vegas (UNLV)<br>
+                   Expected Dec 2027<br><br>
+                   A.A. in Computer Science — College of Southern Nevada (CSN)<br>
+                   Graduated May 2026<br><br>
+                   Data Analyst — NCLab<br>
+                   Completed August 2025<br><br>
+                   Technical Support Fundamentals — Coursera<br>
+                   July 2021
                 </p>
-                
+
                 <!-- Skills Header -->
                 <div id="column-header">
-                    Skills
+                   Skills
                 </div>
 
                 <!-- Skills Content -->
                 <p>
-                    Programming: HTML, CSS, Java, C++, Python, SQL
-                    <br>
-                    Data Visualization: Pandas, NumPy, Matplotlib
-                    <br>
-                    Other Tools: Microsoft Office Suite, Google Workplace
+                   Programming: HTML, CSS, Java, C++, Python, SQL<br>
+                   Data Visualization: Pandas, NumPy, Matplotlib<br>
+                   Other Tools: Microsoft Office Suite, Google Workspace
                 </p>
 
                 <!-- Languages Header -->
                 <div id="column-header">
-                    Languages
+                   Languages
                 </div>
 
-                <!-- Languages Content-->
+                <!-- Languages Content -->
                 <p>
-                    English - Fluent
-                    <br>
-                    Spanish - Fluent
+                   English — Fluent<br>
+                   Spanish — Fluent
                 </p>
             </div>
 
             <!-- Website main column content -->
-            <div class="column main">
+            <main class="column main">
                 <br>
-                <div id="content-header"> 
-                    About Me 
+                <div id="content-header">
+                    About Me
                 </div>
-                
+
                 <br>
 
-                Welcome to my personal website! 
-                <br> <br>
-                My name is Santiago Nungaray and I created this website as a fun
-                side project while on summer break. You may be able to find all
-                my other projects by clicking
-                <a href="projects-page/projects.html">here</a>, or by clicking the 
-                link at the top left of the page. Down below you may find some 
-                of my projects and work experience aswell.
-
-                <br> <br>
+                <p>
+                    Welcome to my personal website! My name is Santiago Nungaray, and I created this site as a fun side project during summer break. Below, you can find a look at my work experience and a featured project section that highlights the portfolio website itself.
+                </p>
+                <p>
+                    <a class="social-link" href="https://www.linkedin.com/in/santiago-n-34b5a9218/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bjd3YiznlRIuuWGiN5PehiA%3D%3D" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn</a>
+                </p>
 
                 <div id="content-header">
                     Work Experience
                 </div>
 
-                <p><b>Patient Services Advocate</b>, <i>UnitedHealth Group</i>
-                    <br> Current</p>
+                <p><strong>Patient Services Advocate</strong>, <em>UnitedHealth Group</em><br>Current</p>
 
                 <ul class="circle-list">
                     <li>
-                        Advocate of the year three years in a row for expectional
-                        adherence, and maintained the lowest error rate in 2023.
-                        Demostrating reliability, accuracy, and consistent 
-                        performance within the department.
-                    </li> 
-                    <li>
-                        Achieved 100% adherence and 0 erros while exceeding call volume
-                        goals of 11+ per hour.
+                        Recognized as Advocate of the Year for three consecutive years for exceptional adherence and maintained the lowest error rate in 2023, demonstrating reliability, accuracy, and consistent performance within the department.
                     </li>
                     <li>
-                        Delivered 98%+ member satisfaction through clear communication, 
-                        rapid issue resolution, and quality service. 
+                        Achieved 100% adherence and 0 errors while exceeding call-volume goals of 11+ per hour.
                     </li>
                     <li>
-                        Assisted patients with MyChart navigation to access results,
-                        schedule appointments, and contact providers.
+                        Delivered 98%+ member satisfaction through clear communication, rapid issue resolution, and quality service.
+                    </li>
+                    <li>
+                        Assisted patients with MyChart navigation to access results, schedule appointments, and contact providers.
                     </li>
                 </ul>
 
-                <br> <br> <br> <br> <br>
-
-                <p><b>Member Services Advocate</b>, <i>Businessolver</i> 
-                    <br> October 2021 - December 2021</p>
+                <p><strong>Member Services Advocate</strong>, <em>Businessolver</em><br>October 2021 - December 2021</p>
 
                 <ul class="circle-list">
                     <li>
-                        Guided members through health, dental, and vision 
-                        insurance plan selections during the open enrollment 
-                        period, ensuring informed coverage decision.
+                        Guided members through health, dental, and vision insurance plan selections during the open enrollment period, ensuring informed coverage decisions.
                     </li>
                     <li>
-                        Explained key insurance terms such as deductibles, 
-                        out-of-pocket maximums, HMOs, and PPOs to help members 
-                        make informed decision.
+                        Explained key insurance terms such as deductibles, out-of-pocket maximums, HMOs, and PPOs to help members make informed decisions.
                     </li>
                     <li>
-                        Delivered acurate, efficient support in high-volume 
-                        enviroment to ensure customer satisfaction.
+                        Delivered accurate, efficient support in a high-volume environment to ensure customer satisfaction.
                     </li>
                 </ul>
 
-                <br> <br> <br>
-
-                <p><b>Delivery Driver</b>, <i>Chicago Guys Pizza</i> 
-                    <br> May 2021 - October 2021</p>
+                <p><strong>Delivery Driver</strong>, <em>Chicago Guys Pizza</em><br>May 2021 - October 2021</p>
 
                 <ul class="circle-list">
                     <li>
-                        Delivered orders accurately and on time in a fast-paced 
-                        enviroment while maintaining excellent customer service.
+                        Delivered orders accurately and on time in a fast-paced environment while maintaining excellent customer service.
                     </li>
-                    <br>
                     <li>
-                        Handled case and card transaction with attention to detail.
+                        Handled cash and card transactions with attention to detail.
                     </li>
-                    <br>
                     <li>
-                        Assisted with order preperation and coordination during 
-                        peak hours to support efficient kitchen operations. 
+                        Assisted with order preparation and coordination during peak hours to support efficient kitchen operations.
                     </li>
-                    <br>
                 </ul>
 
-            
-                <p><b>Warehouse Associate</b>, <i>T.J.Maxx Distribution Center</i> 
-                    <br> August 2020 - May 2021</p>
+                <p><strong>Warehouse Associate</strong>, <em>T.J.Maxx Distribution Center</em><br>August 2020 - May 2021</p>
 
                 <ul class="circle-list">
                     <li>
-                        Inspected incoming merchandise from deliveries to verify
-                         correct quantities, styles, and purchase accuracy before processing.
+                        Inspected incoming merchandise from deliveries to verify correct quantities, styles, and purchase accuracy before processing.
                     </li>
                     <li>
-                        Determined packaging methods to request accurate ticket 
-                        quantities and ensure proper inventory tracking.
+                        Determined packaging methods to request accurate ticket quantities and ensure proper inventory tracking.
                     </li>
                     <li>
-                        Optimized warehouse operations by clearly labeling 
-                        merchandise for accurate forklift placement and retrival.
+                        Optimized warehouse operations by clearly labeling merchandise for accurate forklift placement and retrieval.
                     </li>
                 </ul>
-
-                <br><br><br><br>
 
                 <div id="content-header">
                     Projects
                 </div>
 
-            </div>
+                <article class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>
+                        A responsive personal website built with HTML and CSS to showcase my background, experience,
+                        and interests in a clean, modern layout.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Responsive</span>
+                    </div>
+                </article>
+            </main>
         </div>
 
         <!-- Footer -->
