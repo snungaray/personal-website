@@ -110,6 +110,39 @@ img {
     border: 4px solid #00aeff;
 }
 
+/* Project and content pages: don't force content images to be circular avatars.
+   Keep the circular profile image on the home/sidebar (index) intact by
+   scoping this rule to pages that use .page-shell. This prevents the blue
+   circular border from overlapping text in article figures. */
+.page-shell img {
+    border-radius: 8px !important;
+    border: none !important;
+    margin: 0 0 16px;
+}
+
+/* Improve figure layout on content/project pages so images and captions
+   are grouped and readable without affecting site-wide styles. This centers
+   figures, limits image width for readability, and styles captions. */
+.page-shell figure {
+    margin: 12px 0 18px;
+    text-align: center;
+}
+
+.page-shell figure img {
+    display: inline-block;
+    max-width: 85%;
+    height: auto;
+    border-radius: 8px !important;
+}
+
+.page-shell figure figcaption {
+    margin-top: 8px;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+
 #content-header {
     font-weight: 700;
     font-size: 1.5rem;
