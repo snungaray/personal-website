@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Windows Server Active Directory Home Lab</title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Windows Server Active Directory Home Lab</h1>
+        </header>
+
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li style="float: right;"><a href="../contact-page/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main class="page-shell">
+            <section class="page-intro">
+                <h2>Overview</h2>
+                <p>
+                    I built a small Active Directory (AD) environment from scratch using VirtualBox, to get
+                    hands-on practice with the tools most help desk and junior sysadmin roles use daily: domain
+                    controllers, organizational units, Group Policy, and file share permissions.
+                </p>
+
+                <p><strong>Environment:</strong> 1x Windows Server 2022 VM promoted to a Domain Controller for
+                <code>lab.local</code>, plus 2x Windows 11 client VMs joined to the domain, all on an isolated
+                internal network.</p>
+
+                <p>
+                    <strong>Tags:</strong>
+                    <span>Windows Server 2022</span>
+                    <span>Active Directory</span>
+                    <span>Group Policy</span>
+                    <span>DNS</span>
+                    <span>VirtualBox</span>
+                </p>
+            </section>
+
+            <section>
+                <h2>What I Built</h2>
+
+                <h3>Domain Controller setup</h3>
+                <p>
+                    Installed Windows Server 2022, configured a static IP, and promoted it to a Domain Controller
+                    running AD DS and DNS for a new forest, <code>lab.local</code>.
+                </p>
+
+                <h3>Organizational Units and Group Policy</h3>
+                <p>
+                    Created two OUs — <code>IT</code> and <code>Sales</code> — each with a test user account. I built a
+                    Group Policy Object scoped only to the <code>IT</code> OU that pushes a custom desktop wallpaper,
+                    and confirmed with <code>gpresult /r</code> and side-by-side login tests that the policy applied
+                    to the IT user and correctly did not apply to the Sales user.
+                </p>
+
+                <figure>
+                    <img src="https://www.claudeusercontent.com/images/ad-forest-setup.png" alt="Active Directory Domain Services Configuration Wizard showing new forest setup for lab.local">
+                    <figcaption>Promoting the server to a domain controller for a new forest, lab.local</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://www.claudeusercontent.com/images/gpresult-output.png" alt="gpresult output confirming the IT Desktop Background GPO applied to the IT user">
+                    <figcaption><code>gpresult /r</code> confirming the "IT - Desktop Background" GPO applied correctly, scoped only to the IT OU</figcaption>
+                </figure>
+
+                <h3>Security groups and file share permissions</h3>
+                <p>
+                    Created <code>IT-Group</code> and <code>Sales-Group</code> security groups, separate from the
+                    OUs — OUs organize and apply policy, groups grant access. Set up a shared folder with a nested
+                    subfolder, and configured distinct Share and NTFS permissions so each group could access the
+                    shared folder, but only <code>IT-Group</code> could access the IT-specific subfolder.
+                </p>
+            </section>
+
+            <section>
+                <h2>Problems I Ran Into (and How I Fixed Them)</h2>
+                <p>
+                    Documenting the troubleshooting was, honestly, more valuable than the happy path:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Windows Home edition can't join a domain.</strong> My client VM's install refused to
+                        join <code>lab.local</code>. Windows 10/11 Home doesn't support domain join — only Pro,
+                        Enterprise, or Education do. Upgraded in place using Microsoft's public generic Pro key,
+                        avoiding a reinstall.
+                    </li>
+                    <li>
+                        <strong>A dropped virtual network adapter.</strong> After a few days away, the server's
+                        network adapter showed as <em>Not Present</em>, and anything touching the domain threw a
+                        "Server Down" error. Diagnosed with <code>ipconfig /all</code> and <code>Get-NetAdapter</code>,
+                        then resolved by switching the VM's virtual NIC type in VirtualBox and reconfiguring the
+                        static IP, since the "new" adapter didn't retain the old settings.
+                    </li>
+                    <li>
+                        <strong>Permission inheritance.</strong> After granting Sales-Group access to the parent
+                        shared folder, they could also access the IT-only subfolder — NTFS permissions inherit
+                        downward by default. Fixed by disabling inheritance on the subfolder and setting explicit
+                        permissions.
+                    </li>
+                </ul>
+
+                <figure>
+                    <img src="https://www.claudeusercontent.com/images/netadapter-issue.png" alt="PowerShell output showing Get-NetAdapter with status Not Present">
+                    <figcaption><code>Get-NetAdapter</code> showing the virtual network adapter as "Not Present" — the root cause of a string of downstream errors</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>What This Demonstrates</h2>
+                <ul>
+                    <li>Installing and configuring Windows Server, promoting to a Domain Controller</li>
+                    <li>Structuring an AD environment with OUs vs. security groups, and why they're separate</li>
+                    <li>Building and scoping Group Policy Objects, and verifying results</li>
+                    <li>Configuring Share + NTFS permissions and understanding inheritance</li>
+                    <li>Network troubleshooting inside a virtualized lab environment</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            Website created by Santiago Nungaray
+            <br>
+            <a href="../contact-page/contact.html">Contact Me</a>
+        </footer>
+    </body>
+</html>
