@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Lab: Active Directory, Network, & Monitoring</title>
+        <title>Windows Server & pfSense Home Lab</title>
         <link rel="stylesheet" href="../styles.css">
     </head>
 
     <body>
         <header>
-            <h1>Home Lab: Active Directory, Network &amp; Monitoring</h1>
+            <h1>Windows Server &amp; pfSense Home Lab</h1>
         </header>
 
         <nav aria-label="Primary navigation">
@@ -25,20 +25,19 @@
                 <h2>Overview</h2>
                 <p>
                     I built a small simulated company network from scratch in VirtualBox — an identity layer
-                    (Active Directory), a network layer (a segmented, firewalled network behind pfSense), and an
-                    observability layer (Prometheus and Grafana) — to get hands-on practice with the tools help
-                    desk, sysadmin, and network admin roles use daily. Each layer builds on the last: the network
-                    layer controls what can reach what, the identity layer controls what's allowed to be done
-                    once you're there, and the monitoring layer tells you whether any of it is actually healthy.
+                    (Active Directory) and a network layer (a segmented, firewalled network behind pfSense) —
+                    to get hands-on practice with the tools help desk, sysadmin, and network admin roles use
+                    daily. The two halves connect: the network layer controls what can reach what, and the
+                    identity layer controls what's allowed to be done once you're there.
                 </p>
 
                 <br>
 
                 <p><strong>Environment:</strong> 1x Windows Server 2022 VM promoted to a Domain Controller for
-                <code>lab.local</code>, 2+ Windows 11 client VMs joined to the domain, a pfSense VM acting as
+                <code>lab.local</code>, 2+ Windows 11 client VMs joined to the domain, and a pfSense VM acting as
                 router/firewall between two segmented internal networks — <code>Servers</code>
-                (<code>192.168.60.0/24</code>) and <code>Workstations</code> (<code>192.168.70.0/24</code>) —
-                with remote VPN access, and an Ubuntu Server VM running Prometheus and Grafana to monitor it all.</p>
+                (<code>192.168.60.0/24</code>) and <code>Workstations</code> (<code>192.168.70.0/24</code>) — with
+                remote VPN access.</p>
 
                 <p>
                     <strong>Tags:</strong>
@@ -49,9 +48,6 @@
                     <span>Network Segmentation</span>
                     <span>OpenVPN</span>
                     <span>DNS / DHCP</span>
-                    <span>Linux</span>
-                    <span>Prometheus</span>
-                    <span>Grafana</span>
                     <span>VirtualBox</span>
                 </p>
             </section>
@@ -158,48 +154,7 @@
             </section>
 
             <section>
-                <h2>Phase 3 — Monitoring &amp; Observability</h2>
-                <p>
-                    Added a Prometheus + Grafana monitoring stack on a new Ubuntu Server VM — my first Linux
-                    server in the lab, managed entirely over SSH — to get visibility into whether the
-                    infrastructure I'd built was actually healthy, not just running.
-                </p>
-
-                <h3>Prometheus, installed and run as a proper Linux service</h3>
-                <p>
-                    Rather than using a shortcut package, I installed Prometheus manually: downloaded the binary,
-                    created a dedicated <code>prometheus</code> system user, and wrote the systemd unit file by
-                    hand. This is the same binary + systemd unit + config pattern used by a huge number of Linux
-                    services, so it's a transferable skill beyond Prometheus specifically.
-                </p>
-
-                <figure>
-                    <img src="home-lab-ss/prometheus-service-file.png" alt="systemd service file for Prometheus viewed with systemctl cat">
-                    <figcaption>The systemd unit file for Prometheus — this is where a duplicate flag name caused the service to fail on first boot</figcaption>
-                </figure>
-
-                <h3>Exporters and cross-network scraping</h3>
-                <p>
-                    Installed <code>windows_exporter</code> on the AD server to expose CPU, memory, and system
-                    metrics, then configured Prometheus to scrape it across the network. Confirmed data flowing
-                    end to end in Prometheus's own web UI before layering visualization on top.
-                </p>
-
-                <figure>
-                    <img src="home-lab-ss/prometheus-target-down.png" alt="Prometheus targets page showing the ad-server target as down with a context deadline exceeded error">
-                    <figcaption>The AD server target initially failed to scrape — a missing Windows Firewall rule for the exporter's port, separate from the SMB/LDAP rules from the network phase</figcaption>
-                </figure>
-
-                <h3>Grafana dashboards and alerting</h3>
-                <p>
-                    Connected Grafana to Prometheus as a data source and built a dashboard tracking available
-                    memory and CPU usage over time for the AD server. Added an alert rule on the built-in
-                    <code>up</code> metric that fires when the server stops responding, and verified it correctly
-                    transitions from Normal → Pending → Firing by stopping the exporter service and watching it
-                    trigger.
-                </p>
-            </section>
-
+                <h2>Problems I Ran Into (and How I Fixed Them)</h2>
                 <p>
                     Documenting the troubleshooting was, honestly, more valuable than the happy path:
                 </p>
@@ -239,21 +194,6 @@
                         to its old address. A quick reminder that documentation needs to keep pace with
                         infrastructure changes.
                     </li>
-                    <li>
-                        <strong>A duplicated flag broke the Prometheus service.</strong> The systemd unit file
-                        used <code>--web.console.templates</code> twice instead of
-                        <code>--web.console.libraries</code> for the second flag. Prometheus responded by dumping
-                        its help text instead of starting — diagnosed by reading the raw output with
-                        <code>journalctl -u prometheus</code> rather than relying on <code>systemctl status</code>
-                        alone.
-                    </li>
-                    <li>
-                        <strong>An exporter reachable locally but not remotely.</strong> <code>windows_exporter</code>
-                        worked fine at <code>localhost:9182</code> on the AD server itself, but Prometheus
-                        couldn't scrape it across the network. The installer hadn't created a Windows Firewall
-                        rule for the port — a good reminder that "it works on this machine" and "it works from
-                        the network" are two different checks.
-                    </li>
                 </ul>
 
                 <figure>
@@ -273,10 +213,7 @@
                     <li>Designing network segmentation with a default-deny, exceptions-only approach</li>
                     <li>Configuring DNS forwarding and DHCP across segmented networks</li>
                     <li>Setting up certificate-based remote access VPN</li>
-                    <li>Installing and running a Linux service manually via systemd, including user and permission setup</li>
-                    <li>Configuring metrics exporters and cross-network scraping with Prometheus</li>
-                    <li>Building Grafana dashboards and threshold-based alerting</li>
-                    <li>Methodical troubleshooting across Windows, network, and Linux infrastructure layers</li>
+                    <li>Methodical troubleshooting across both Windows and network infrastructure layers</li>
                 </ul>
             </section>
         </main>
