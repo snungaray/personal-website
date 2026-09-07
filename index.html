@@ -33,10 +33,12 @@
 
         <!-- Navigation Bar -->
         <nav aria-label="Primary navigation">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">&#9776;</label>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="projects-page/projects.html">Projects</a></li>
-                <li style="float: right;"><a href="contact-page/contact.html">Contact</a></li>
+                <li class="nav-right"><a href="contact-page/contact.html">Contact</a></li>
             </ul>
         </nav>
 
@@ -67,15 +69,49 @@
 
                 <!-- Education Content -->
                 <p>
-                   B.S. in Computer Science — University of Nevada, Las Vegas (UNLV)<br>
-                   Expected Dec 2027<br><br>
-                   A.A. in Computer Science — College of Southern Nevada (CSN)<br>
-                   Graduated May 2026<br><br>
-                   Data Analyst — NCLab<br>
-                   Completed August 2025<br><br>
-                   Technical Support Fundamentals — Coursera<br>
-                   July 2021
+                   B.S. Computer Science — University of Nevada, Las Vegas (UNLV)<br>
+                   Expected Fall 2027<br><br>
+                   A.A. Computer Science — College of Southern Nevada (CSN)<br>
+                   Graduated May 2026
                 </p>
+
+                <!-- Certifications Header -->
+                <div id="column-header">
+                   Certifications
+                </div>
+
+                <!-- Certifications Content -->
+                <div class="cert-item">
+                    <span class="cert-name">CompTIA A+</span>
+                    <div class="tag-row">
+                        <span class="status-pill is-success-pill">Core 1 passed</span>
+                        <span class="status-pill">Core 2 in progress</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-name">CompTIA Network+</span>
+                    <div class="tag-row">
+                        <span class="status-pill">In progress</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-name">CompTIA Security+</span>
+                    <div class="tag-row">
+                        <span class="status-pill">In progress</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-name">Data Analyst — NCLab</span>
+                    <div class="tag-row">
+                        <span class="status-pill is-success-pill">Completed Aug 2025</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-name">Technical Support Fundamentals — Coursera</span>
+                    <div class="tag-row">
+                        <span class="status-pill is-success-pill">Completed Jul 2021</span>
+                    </div>
+                </div>
 
                 <!-- Skills Header -->
                 <div id="column-header">
@@ -83,11 +119,53 @@
                 </div>
 
                 <!-- Skills Content -->
-                <p>
-                   Programming: HTML, CSS, Java, C++, Python, SQL<br>
-                   Data Visualization: Pandas, NumPy, Matplotlib<br>
-                   Other Tools: Microsoft Office Suite, Google Workspace
-                </p>
+                <div class="skill-group">
+                    <div class="skill-group-label">Programming</div>
+                    <div class="tag-row">
+                        <span class="skill-pill">HTML</span>
+                        <span class="skill-pill">CSS</span>
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">C++</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Systems &amp; Networking</div>
+                    <div class="tag-row">
+                        <span class="skill-pill">Windows Server</span>
+                        <span class="skill-pill">Active Directory</span>
+                        <span class="skill-pill">Group Policy</span>
+                        <span class="skill-pill">DNS/DHCP</span>
+                        <span class="skill-pill">pfSense</span>
+                        <span class="skill-pill">Network Segmentation</span>
+                        <span class="skill-pill">OpenVPN</span>
+                        <span class="skill-pill">Linux</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Monitoring</div>
+                    <div class="tag-row">
+                        <span class="skill-pill">Prometheus</span>
+                        <span class="skill-pill">Grafana</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Data Visualization</div>
+                    <div class="tag-row">
+                        <span class="skill-pill">Pandas</span>
+                        <span class="skill-pill">NumPy</span>
+                        <span class="skill-pill">Matplotlib</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Other Tools</div>
+                    <div class="tag-row">
+                        <span class="skill-pill">VirtualBox</span>
+                        <span class="skill-pill">Microsoft Office Suite</span>
+                        <span class="skill-pill">Google Workspace</span>
+                    </div>
+                </div>
 
                 <!-- Languages Header -->
                 <div id="column-header">
@@ -111,7 +189,7 @@
                 <br>
 
                 <p>
-                    Welcome to my personal website! My name is Santiago Nungaray, and I created this site as a fun side project during summer break. Below, you can find a look at my work experience and a featured project section that highlights the portfolio website itself.
+                    Welcome to my personal website! My name is Santiago Nungaray, and I created this site as a fun side project during summer break. Below, you can find a look at my work experience and a featured project section that highlights this portfolio site along with hands-on IT and systems projects I've built.
                 </p>
                 <p>
                     <a class="social-link" href="https://www.linkedin.com/in/santiago-n-34b5a9218/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bjd3YiznlRIuuWGiN5PehiA%3D%3D" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn</a>
