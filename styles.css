@@ -52,6 +52,10 @@ header h1 {
     }
 }
 
+nav {
+    background-color: #0f172a;
+}
+
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -379,6 +383,7 @@ img {
     color: #0077b6;
     font-weight: 700;
     text-decoration: none;
+    margin: 4px 6px 4px 0;
 }
 
 .social-link:hover {
